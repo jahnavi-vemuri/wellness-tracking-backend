@@ -1,6 +1,0 @@
-edu/indiana/se2/Wellness/Tracker/controller/ActivityController.class
-edu/indiana/se2/Wellness/Tracker/services/activity/ActivityServiceImpl.class
-edu/indiana/se2/Wellness/Tracker/services/activity/ActivityService.class
-edu/indiana/se2/Wellness/Tracker/entity/Activity.class
-edu/indiana/se2/Wellness/Tracker/dto/ActivityDTO.class
-edu/indiana/se2/Wellness/Tracker/repository/ActivityRepository.class

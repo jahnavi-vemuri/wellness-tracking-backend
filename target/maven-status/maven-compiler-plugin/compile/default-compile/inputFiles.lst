@@ -1,7 +1,0 @@
-/Users/jahnavivemuri/Documents/SE2/wellness-tracking-backend/src/main/java/edu/indiana/se2/Wellness/Tracker/WellnessTrackerApplication.java
-/Users/jahnavivemuri/Documents/SE2/wellness-tracking-backend/src/main/java/edu/indiana/se2/Wellness/Tracker/controller/ActivityController.java
-/Users/jahnavivemuri/Documents/SE2/wellness-tracking-backend/src/main/java/edu/indiana/se2/Wellness/Tracker/dto/ActivityDTO.java
-/Users/jahnavivemuri/Documents/SE2/wellness-tracking-backend/src/main/java/edu/indiana/se2/Wellness/Tracker/entity/Activity.java
-/Users/jahnavivemuri/Documents/SE2/wellness-tracking-backend/src/main/java/edu/indiana/se2/Wellness/Tracker/repository/ActivityRepository.java
-/Users/jahnavivemuri/Documents/SE2/wellness-tracking-backend/src/main/java/edu/indiana/se2/Wellness/Tracker/services/activity/ActivityService.java
-/Users/jahnavivemuri/Documents/SE2/wellness-tracking-backend/src/main/java/edu/indiana/se2/Wellness/Tracker/services/activity/ActivityServiceImpl.java
