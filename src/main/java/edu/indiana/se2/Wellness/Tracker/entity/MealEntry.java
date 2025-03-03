@@ -13,7 +13,6 @@ public class MealEntry {
     private Long userId;
     private LocalDate date;
 
-    // You can use an enum if desired:
     private String mealType; // e.g., "BREAKFAST", "LUNCH", etc.
 
     @Column(length = 1000)

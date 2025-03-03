@@ -18,7 +18,6 @@ public class MealEntryService {
     }
 
     public MealEntry uploadMeal(MealEntry mealEntry) {
-        // Add any business rules or validations if necessary.
         return mealEntryRepository.save(mealEntry);
     }
 
