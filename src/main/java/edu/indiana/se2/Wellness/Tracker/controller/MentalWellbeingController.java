@@ -32,7 +32,7 @@ public class MentalWellbeingController {
     }
 
     // Endpoint to retrieve entries for a given user
-    @GetMapping("/logs/{userId}")
+    @GetMapping("/logs")
     public ResponseEntity<List<MentalWellbeingEntry>> getUserEntries(@PathVariable Long userId) {
         List<MentalWellbeingEntry> entries = service.getEntriesForUser(userId);
         return new ResponseEntity<>(entries, HttpStatus.OK);

@@ -1,23 +1,22 @@
 package edu.indiana.se2.Wellness.Tracker.controller;
 
-import edu.indiana.se2.Wellness.Tracker.dto.ActivityDTO;
-import edu.indiana.se2.Wellness.Tracker.services.activity.ActivityService;
+import edu.indiana.se2.Wellness.Tracker.dto.PhysicalWellbeingDTO;
+import edu.indiana.se2.Wellness.Tracker.services.physicalWellbeing.PhysicalWellbeingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api/physical-wellbeing")
 @RequiredArgsConstructor
 @CrossOrigin("*")
-public class ActivityController {
+public class PhysicalWellbeingController {
+    private final PhysicalWellbeingService activityService;
 
-    private final ActivityService activityService;
-
-    @PostMapping("/activity")
-    public ResponseEntity<?> postActivity(@RequestBody ActivityDTO dto){
-        ActivityDTO createActivity = activityService.postActivity(dto);
+    @PostMapping("/physicalactivity")
+    public ResponseEntity<?> postActivity(@RequestBody PhysicalWellbeingDTO dto){
+        PhysicalWellbeingDTO createActivity = activityService.postActivity(dto);
         if(createActivity != null){
             return ResponseEntity.status(HttpStatus.CREATED).body(createActivity);
         }
@@ -26,7 +25,7 @@ public class ActivityController {
         }
     }
 
-    @GetMapping("/activities")
+    @GetMapping("/physicalactivities")
     public ResponseEntity<?> getActivites(){
         try{
             return ResponseEntity.ok(activityService.getActivities());

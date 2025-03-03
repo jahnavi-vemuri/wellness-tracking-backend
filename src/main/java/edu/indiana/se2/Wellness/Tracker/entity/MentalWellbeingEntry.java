@@ -11,7 +11,6 @@ public class MentalWellbeingEntry {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //
     private Long userId;
 
     private LocalDate date;

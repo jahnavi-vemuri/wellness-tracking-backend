@@ -1,37 +1,40 @@
 package edu.indiana.se2.Wellness.Tracker.entity;
 
-
-import edu.indiana.se2.Wellness.Tracker.dto.ActivityDTO;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.Data;
+import edu.indiana.se2.Wellness.Tracker.dto.PhysicalWellbeingDTO;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Date;
 
 @Entity
-@Data
-public class Activity {
+@Table(name = "physical_wellbeing_entry")
+@Getter
+@Setter
+public class PhysicalWellbeingEntry {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private Date date;
 
-//    physical wellness
+    @Column(nullable = false)
     private int steps;
+
+    @Column(nullable = false)
     private double distance;
+
+    @Column(nullable = false)
     private int caloriesBurned;
 
-    public ActivityDTO getActivityDTO(){
-        ActivityDTO activityDTO = new ActivityDTO();
+    public PhysicalWellbeingDTO getActivityDTO() {
+        PhysicalWellbeingDTO activityDTO = new PhysicalWellbeingDTO();
         activityDTO.setId(id);
         activityDTO.setDate(date);
         activityDTO.setSteps(steps);
         activityDTO.setDistance(distance);
         activityDTO.setCaloriesBurned(caloriesBurned);
-
         return activityDTO;
     }
 }

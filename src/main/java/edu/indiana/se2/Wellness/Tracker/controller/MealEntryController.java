@@ -28,7 +28,7 @@ public class MealEntryController {
     }
 
     // Endpoint to retrieve meal entries for a user
-    @GetMapping("/user/{userId}")
+    @GetMapping("/user")
     public ResponseEntity<List<MealEntry>> getMealsForUser(@PathVariable Long userId) {
         List<MealEntry> meals = mealEntryService.getMealsForUser(userId);
         return new ResponseEntity<>(meals, HttpStatus.OK);

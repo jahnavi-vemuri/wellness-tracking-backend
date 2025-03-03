@@ -5,9 +5,8 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class ActivityDTO {
+public class PhysicalWellbeingDTO {
     private Long id;
-
     private Date date;
 
     private int steps;
