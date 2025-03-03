@@ -1,7 +1,7 @@
 package edu.indiana.se2.Wellness.Tracker.controller;
 
 import edu.indiana.se2.Wellness.Tracker.entity.MentalWellbeingEntry;
-import edu.indiana.se2.Wellness.Tracker.services.activity.MentalWellbeingService;
+import edu.indiana.se2.Wellness.Tracker.services.mentalWellbeing.MentalWellbeingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

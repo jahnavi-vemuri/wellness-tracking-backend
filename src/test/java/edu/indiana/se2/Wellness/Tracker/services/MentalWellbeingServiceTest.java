@@ -2,7 +2,7 @@ package edu.indiana.se2.Wellness.Tracker.services;
 
 import edu.indiana.se2.Wellness.Tracker.entity.MentalWellbeingEntry;
 import edu.indiana.se2.Wellness.Tracker.repository.MentalWellbeingRepository;
-import edu.indiana.se2.Wellness.Tracker.services.activity.MentalWellbeingService;
+import edu.indiana.se2.Wellness.Tracker.services.mentalWellbeing.MentalWellbeingService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
