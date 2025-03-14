@@ -35,6 +35,11 @@ public class AuthenticationService implements IAuthenticationService, org.spring
     }
 
     @Override
+    public boolean login(String username, String password) throws IOException {
+        return false;
+    }
+
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         try {
             Customer customer = authenticationRepository.findByUsername(username);

@@ -7,5 +7,5 @@ import java.io.IOException;
 @Service
 public interface IAuthenticationService {
     Customer register(Customer customer) throws IOException;
-//    boolean login(String username, String password) throws IOException;
+    boolean login(String username, String password) throws IOException;
 }

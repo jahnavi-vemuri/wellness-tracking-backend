@@ -10,8 +10,11 @@ public class Customer {
     @Id
     private String username;
     private String password;
+    private String confirmPassword;
     private String emailId;
     private String role;
+    private String firstName;
+    private String lastName;
 
     public Customer(String username, String password) {
         this.username = username;
@@ -22,8 +25,11 @@ public class Customer {
     public Customer(String username, String password, String role) {
         this.username = username;
         this.password = password;
+        this.confirmPassword = confirmPassword;
         this.emailId = emailId;
         this.role = "USER";
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public Customer() {
@@ -44,6 +50,13 @@ public class Customer {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 
     public String getEmailId() {
