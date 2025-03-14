@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/physical-wellbeing")
+@RequestMapping("/api/user/physical-wellbeing")
 @RequiredArgsConstructor
 @CrossOrigin("*")
 public class PhysicalWellbeingController {

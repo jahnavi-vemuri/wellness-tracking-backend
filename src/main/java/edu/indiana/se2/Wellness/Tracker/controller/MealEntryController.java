@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/meals")
+@RequestMapping("/api/user/meals")
 public class MealEntryController {
 
     private final MealEntryService mealEntryService;
@@ -28,10 +28,9 @@ public class MealEntryController {
     }
 
     // Endpoint to retrieve meal entries for a user
-    @GetMapping("/user")
+    @GetMapping("/{userId}")
     public ResponseEntity<List<MealEntry>> getMealsForUser(@PathVariable Long userId) {
         List<MealEntry> meals = mealEntryService.getMealsForUser(userId);
         return new ResponseEntity<>(meals, HttpStatus.OK);
     }
 }
-

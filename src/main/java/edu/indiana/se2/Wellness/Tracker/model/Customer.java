@@ -11,11 +11,19 @@ public class Customer {
     private String username;
     private String password;
     private String emailId;
+    private String role;
 
     public Customer(String username, String password) {
         this.username = username;
         this.password = password;
         this.emailId = emailId;
+        this.role = "USER";
+    }
+    public Customer(String username, String password, String role) {
+        this.username = username;
+        this.password = password;
+        this.emailId = emailId;
+        this.role = "USER";
     }
 
     public Customer() {
@@ -45,5 +53,9 @@ public class Customer {
     public void setEmailId(String emailId) {
         this.emailId = emailId;
     }
+
+    public String getRole() {return role;}
+
+    public void setRole(String role) {this.role = role;}
 }
 

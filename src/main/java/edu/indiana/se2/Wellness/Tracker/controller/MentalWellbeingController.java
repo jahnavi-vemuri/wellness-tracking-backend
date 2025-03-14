@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/mental-wellbeing")
+@RequestMapping("/api/user/mental-wellbeing")
 public class MentalWellbeingController {
 
     private final MentalWellbeingService service;
@@ -32,7 +32,7 @@ public class MentalWellbeingController {
     }
 
     // Endpoint to retrieve entries for a given user
-    @GetMapping("/logs")
+    @GetMapping("/logs/{userId}")
     public ResponseEntity<List<MentalWellbeingEntry>> getUserEntries(@PathVariable Long userId) {
         List<MentalWellbeingEntry> entries = service.getEntriesForUser(userId);
         return new ResponseEntity<>(entries, HttpStatus.OK);
