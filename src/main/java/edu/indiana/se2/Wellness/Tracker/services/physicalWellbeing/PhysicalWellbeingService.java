@@ -25,6 +25,8 @@ public class PhysicalWellbeingService {
         entry.setSteps(dto.getSteps());
         entry.setDistance(dto.getDistance());
         entry.setCaloriesBurned(dto.getCaloriesBurned());
+        entry.setWeight(dto.getWeight());
+        entry.setWorkoutType(dto.getWorkoutType());
 
         PhysicalWellbeingEntry savedEntry = repository.save(entry);
         return savedEntry.getActivityDTO();

@@ -28,6 +28,12 @@ public class PhysicalWellbeingEntry {
     @Column(nullable = false)
     private int caloriesBurned;
 
+    @Column(nullable = false)
+    private int weight;
+
+    @Column(nullable = false)
+    private String workoutType;
+
     public PhysicalWellbeingDTO getActivityDTO() {
         PhysicalWellbeingDTO activityDTO = new PhysicalWellbeingDTO();
         activityDTO.setId(id);
@@ -35,6 +41,8 @@ public class PhysicalWellbeingEntry {
         activityDTO.setSteps(steps);
         activityDTO.setDistance(distance);
         activityDTO.setCaloriesBurned(caloriesBurned);
+        activityDTO.setWeight(weight);
+        activityDTO.setWorkoutType(workoutType);
         return activityDTO;
     }
 }

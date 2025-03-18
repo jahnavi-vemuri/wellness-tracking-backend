@@ -10,4 +10,5 @@ public class MealEntryDTO {
     private String mealType;
     private String description;
     private Double calories;
+    private Double water;
 }

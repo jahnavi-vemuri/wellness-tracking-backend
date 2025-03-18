@@ -8,5 +8,9 @@ public class MentalWellbeingDTO {
     private Long userId;
     private LocalDate date;
     private int moodRating;
+    private int stressLevel;
+    private int bedTime;
+    private int wakeupTime;
+    private double ScreenTime;
     private String notes;
 }

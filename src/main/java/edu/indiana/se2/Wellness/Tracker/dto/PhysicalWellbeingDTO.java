@@ -14,4 +14,8 @@ public class PhysicalWellbeingDTO {
     private double distance;
 
     private int caloriesBurned;
+
+    private int weight;
+
+    private String workoutType;
 }

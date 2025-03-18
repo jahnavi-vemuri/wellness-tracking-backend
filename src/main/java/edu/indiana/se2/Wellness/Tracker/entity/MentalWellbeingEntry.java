@@ -1,74 +1,56 @@
 package edu.indiana.se2.Wellness.Tracker.entity;
 
-
+import edu.indiana.se2.Wellness.Tracker.dto.MentalWellbeingDTO;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "mental_wellbeing_entry")
+@Getter
+@Setter
 public class MentalWellbeingEntry {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private Long userId;
 
+    @Column(nullable = false)
     private LocalDate date;
 
-    // For example, a rating between 1 to 5
+    @Column(nullable = false)
     private int moodRating;
 
-    @Column(length = 1000)
-    private String notes;
+    @Column(nullable = false)
+    private int stressLevel;
 
-    public MentalWellbeingEntry() {}
+    @Column(nullable = false)
+    private int bedTime; // Store bedtime as HHMM (e.g., 2230 for 10:30 PM)
 
-    public MentalWellbeingEntry(Long userId, LocalDate date, int moodRating, String notes) {
-        this.userId = userId;
-        this.date = date;
-        this.moodRating = moodRating;
-        this.notes = notes;
-    }
+    @Column(nullable = false)
+    private int wakeupTime; // Store wake-up time as HHMM (e.g., 0630 for 6:30 AM)
 
-    // Getters and setters
+    @Column(nullable = false)
+    private double screenTime; // Hours of screen usage
 
-    public Long getId() {
-        return id;
-    }
+    @Column(columnDefinition = "TEXT")
+    private String notes; // Optional journal entry
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public int getMoodRating() {
-        return moodRating;
-    }
-
-    public void setMoodRating(int moodRating) {
-        this.moodRating = moodRating;
-    }
-
-    public String getNotes() {
-        return notes;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
+    public MentalWellbeingDTO getMentalWellbeingDTO() {
+        MentalWellbeingDTO dto = new MentalWellbeingDTO();
+        dto.setId(id);
+        dto.setUserId(userId);
+        dto.setDate(date);
+        dto.setMoodRating(moodRating);
+        dto.setStressLevel(stressLevel);
+        dto.setBedTime(bedTime);
+        dto.setWakeupTime(wakeupTime);
+        dto.setScreenTime(screenTime);
+        dto.setNotes(notes);
+        return dto;
     }
 }

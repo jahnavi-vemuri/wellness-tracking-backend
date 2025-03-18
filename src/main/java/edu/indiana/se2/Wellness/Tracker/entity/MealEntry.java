@@ -1,85 +1,47 @@
 package edu.indiana.se2.Wellness.Tracker.entity;
 
+import edu.indiana.se2.Wellness.Tracker.dto.MealEntryDTO;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "meal_entry")
+@Getter
+@Setter
 public class MealEntry {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private Long userId;
+
+    @Column(nullable = false)
     private LocalDate date;
 
-    private String mealType; // e.g., "BREAKFAST", "LUNCH", etc.
+    @Column(nullable = false)
+    private String mealType; // Breakfast, Lunch, Dinner, Snack
 
-    @Column(length = 1000)
-    private String description;
+    @Column(columnDefinition = "TEXT")
+    private String description; // Description of the meal
 
-    private Double calories;
+    @Column(nullable = false)
+    private Double calories; // Total calories consumed
 
-    // Constructors, getters, and setters
+    @Column(nullable = false)
+    private Double water; // Water intake in liters
 
-    public MealEntry() {
-    }
-
-    public MealEntry(Long userId, LocalDate date, String mealType, String description, Double calories) {
-        this.userId = userId;
-        this.date = date;
-        this.mealType = mealType;
-        this.description = description;
-        this.calories = calories;
-    }
-
-    // Getters and setters...
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public String getMealType() {
-        return mealType;
-    }
-
-    public void setMealType(String mealType) {
-        this.mealType = mealType;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Double getCalories() {
-        return calories;
-    }
-
-    public void setCalories(Double calories) {
-        this.calories = calories;
+    public MealEntryDTO getMealEntryDTO() {
+        MealEntryDTO dto = new MealEntryDTO();
+        dto.setUserId(userId);
+        dto.setDate(date);
+        dto.setMealType(mealType);
+        dto.setDescription(description);
+        dto.setCalories(calories);
+        dto.setWater(water);
+        return dto;
     }
 }
