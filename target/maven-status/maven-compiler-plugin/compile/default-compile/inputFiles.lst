@@ -17,6 +17,7 @@
 /Users/jahnavivemuri/Documents/wellness-tracking-backend/src/main/java/edu/indiana/se2/Wellness/Tracker/repository/MentalWellbeingRepository.java
 /Users/jahnavivemuri/Documents/wellness-tracking-backend/src/main/java/edu/indiana/se2/Wellness/Tracker/repository/PhysicalWellbeingRepository.java
 /Users/jahnavivemuri/Documents/wellness-tracking-backend/src/main/java/edu/indiana/se2/Wellness/Tracker/security/Jwks.java
+/Users/jahnavivemuri/Documents/wellness-tracking-backend/src/main/java/edu/indiana/se2/Wellness/Tracker/security/JwtUtil.java
 /Users/jahnavivemuri/Documents/wellness-tracking-backend/src/main/java/edu/indiana/se2/Wellness/Tracker/security/KeyGeneratorUtils.java
 /Users/jahnavivemuri/Documents/wellness-tracking-backend/src/main/java/edu/indiana/se2/Wellness/Tracker/security/SecurityConfig.java
 /Users/jahnavivemuri/Documents/wellness-tracking-backend/src/main/java/edu/indiana/se2/Wellness/Tracker/services/Registration/AuthenticationService.java

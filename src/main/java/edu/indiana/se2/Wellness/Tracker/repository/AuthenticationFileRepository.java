@@ -1,6 +1,5 @@
 package edu.indiana.se2.Wellness.Tracker.repository;
 
-
 import edu.indiana.se2.Wellness.Tracker.model.Customer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +18,6 @@ public class AuthenticationFileRepository implements IAuthenticationRepository {
     private static final String DATABASE_NAME = "data/customers.txt";
     private static final String NEW_LINE = System.lineSeparator();
 
-    // Constructor to create the database file if it doesn't exist
     public AuthenticationFileRepository() {
         File file = new File(DATABASE_NAME);
         file.getParentFile().mkdirs();
@@ -39,26 +37,19 @@ public class AuthenticationFileRepository implements IAuthenticationRepository {
             if (!line.trim().isEmpty()) {
                 String[] properties = line.split(",");
                 if (properties[0].trim().equalsIgnoreCase(username.trim())) {
-                    // If the role isn’t present, default to "USER"
-                    String role = properties.length >= 3 ? properties[2].trim() : "USER";
-                    return new Customer(properties[0].trim(), properties[1].trim(), role);
+                    return new Customer(properties[0].trim(), properties[1].trim());
                 }
             }
         }
         return null;
     }
 
-
     @Override
     public boolean save(Customer customer) throws IOException {
         Customer existingCustomer = findByUsername(customer.getUsername());
         if (existingCustomer == null) {
             Path path = Paths.get(DATABASE_NAME);
-            // Save in the format: username,password,role
-            String data = String.format("%s,%s,%s",
-                    customer.getUsername().trim(),
-                    customer.getPassword().trim(),
-                    customer.getRole().trim());
+            String data = String.format("%s,%s", customer.getUsername().trim(), customer.getPassword().trim());
             data += NEW_LINE;
             Files.write(path, data.getBytes(StandardCharsets.UTF_8), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
             return true;
@@ -66,4 +57,3 @@ public class AuthenticationFileRepository implements IAuthenticationRepository {
         return false;
     }
 }
-
