@@ -1,6 +1,7 @@
 package edu.indiana.se2.Wellness.Tracker.controller;
 
 import edu.indiana.se2.Wellness.Tracker.model.Customer;
+import edu.indiana.se2.Wellness.Tracker.dto.LoginRequest;
 import edu.indiana.se2.Wellness.Tracker.services.Registration.IAuthenticationService;
 import edu.indiana.se2.Wellness.Tracker.services.TokenService;
 
@@ -8,20 +9,23 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 @RestController
+@RequestMapping
+@CrossOrigin("*")
 public class AuthenticationController {
+
     private final IAuthenticationService authenticationService;
     private final AuthenticationManager authenticationManager;
-    private TokenService tokenService;
+    private final TokenService tokenService;
 
-    public AuthenticationController(IAuthenticationService authenticationService,
+    public AuthenticationController(
+            IAuthenticationService authenticationService,
             AuthenticationManager authenticationManager,
             TokenService tokenService) {
         this.authenticationService = authenticationService;
@@ -39,15 +43,17 @@ public class AuthenticationController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Map<String, String>> login(@RequestBody Customer customer) {
-        Authentication authentication = authenticationManager
-                .authenticate(new UsernamePasswordAuthenticationToken(
-                        customer.getUsername(),
-                        customer.getPassword()));
+    public ResponseEntity<Map<String, String>> login(@RequestBody LoginRequest loginRequest) {
+        Authentication authentication = authenticationManager.authenticate(
+            new UsernamePasswordAuthenticationToken(
+                loginRequest.getUsername(),
+                loginRequest.getPassword()
+            )
+        );
 
         String token = tokenService.generateToken(authentication);
-
-        // ✅ Ensure response is JSON
-        return ResponseEntity.ok(Map.of("token", token));
+        Map<String, String> response = new HashMap<>();
+        response.put("token", token);
+        return ResponseEntity.ok(response);
     }
 }

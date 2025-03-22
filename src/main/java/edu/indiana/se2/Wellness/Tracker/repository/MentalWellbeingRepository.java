@@ -10,9 +10,6 @@ import java.util.Optional;
 
 @Repository
 public interface MentalWellbeingRepository extends JpaRepository<MentalWellbeingEntry, Long> {
-    // Retrieve all logs for a given user
-    List<MentalWellbeingEntry> findByUserId(Long userId);
-
-    // To prevent duplicate logs per day by checking if an entry already exists
-    Optional<MentalWellbeingEntry> findByUserIdAndDate(Long userId, LocalDate date);
+    List<MentalWellbeingEntry> findByUsername(String username);
+    Optional<MentalWellbeingEntry> findByUsernameAndDate(String username, LocalDate date);
 }

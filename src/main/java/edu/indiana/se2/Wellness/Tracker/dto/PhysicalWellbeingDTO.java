@@ -6,7 +6,7 @@ import java.util.Date;
 
 @Data
 public class PhysicalWellbeingDTO {
-    private Long id;
+    private String username;
     private Date date;
 
     private int steps;

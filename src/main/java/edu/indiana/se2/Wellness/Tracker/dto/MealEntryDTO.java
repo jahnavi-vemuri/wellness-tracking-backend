@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 @Data
 public class MealEntryDTO {
-    private Long userId;
+    private String username;
     private LocalDate date;
     private String mealType;
     private String description;

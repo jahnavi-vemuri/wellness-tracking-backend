@@ -12,9 +12,13 @@ import java.util.Date;
 @Getter
 @Setter
 public class PhysicalWellbeingEntry {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id; // ✅ Primary Key
+
+    @Column(nullable = false)
+    private String username;
 
     @Column(nullable = false)
     private Date date;
@@ -35,14 +39,14 @@ public class PhysicalWellbeingEntry {
     private String workoutType;
 
     public PhysicalWellbeingDTO getActivityDTO() {
-        PhysicalWellbeingDTO activityDTO = new PhysicalWellbeingDTO();
-        activityDTO.setId(id);
-        activityDTO.setDate(date);
-        activityDTO.setSteps(steps);
-        activityDTO.setDistance(distance);
-        activityDTO.setCaloriesBurned(caloriesBurned);
-        activityDTO.setWeight(weight);
-        activityDTO.setWorkoutType(workoutType);
-        return activityDTO;
+        PhysicalWellbeingDTO dto = new PhysicalWellbeingDTO();
+        dto.setUsername(username); // ✅ include it if needed on frontend
+        dto.setDate(date);
+        dto.setSteps(steps);
+        dto.setDistance(distance);
+        dto.setCaloriesBurned(caloriesBurned);
+        dto.setWeight(weight);
+        dto.setWorkoutType(workoutType);
+        return dto;
     }
 }

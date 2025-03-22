@@ -17,7 +17,7 @@ public class MealEntry {
     private Long id;
 
     @Column(nullable = false)
-    private Long userId;
+    private String username; // 👈 Replaces userId
 
     @Column(nullable = false)
     private LocalDate date;
@@ -36,7 +36,6 @@ public class MealEntry {
 
     public MealEntryDTO getMealEntryDTO() {
         MealEntryDTO dto = new MealEntryDTO();
-        dto.setUserId(userId);
         dto.setDate(date);
         dto.setMealType(mealType);
         dto.setDescription(description);

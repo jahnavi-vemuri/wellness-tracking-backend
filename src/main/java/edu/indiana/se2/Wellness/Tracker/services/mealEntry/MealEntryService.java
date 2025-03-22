@@ -18,10 +18,12 @@ public class MealEntryService {
     }
 
     public MealEntry uploadMeal(MealEntry mealEntry) {
+        // Optional: check for duplicates if needed
         return mealEntryRepository.save(mealEntry);
     }
 
-    public List<MealEntry> getMealsForUser(Long userId) {
-        return mealEntryRepository.findByUserId(userId);
+    public List<MealEntry> getMealsForUser(String username) {
+        return mealEntryRepository.findByUsername(username);
     }
 }
+

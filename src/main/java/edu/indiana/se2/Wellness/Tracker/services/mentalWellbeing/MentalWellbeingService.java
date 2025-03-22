@@ -19,15 +19,14 @@ public class MentalWellbeingService {
     }
 
     public MentalWellbeingEntry logEntry(MentalWellbeingEntry entry) {
-        // Prevent duplicate logs for the same user on the same day
-        Optional<MentalWellbeingEntry> existingEntry = repository.findByUserIdAndDate(entry.getUserId(), entry.getDate());
-        if (existingEntry.isPresent()) {
+        Optional<MentalWellbeingEntry> existing = repository.findByUsernameAndDate(entry.getUsername(), entry.getDate());
+        if (existing.isPresent()) {
             throw new IllegalArgumentException("Entry for this day already exists.");
         }
         return repository.save(entry);
     }
 
-    public List<MentalWellbeingEntry> getEntriesForUser(Long userId) {
-        return repository.findByUserId(userId);
+    public List<MentalWellbeingEntry> getEntriesForUser(String username) {
+        return repository.findByUsername(username);
     }
 }

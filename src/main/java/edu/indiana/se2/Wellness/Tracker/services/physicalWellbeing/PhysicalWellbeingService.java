@@ -1,13 +1,12 @@
 package edu.indiana.se2.Wellness.Tracker.services.physicalWellbeing;
 
-import edu.indiana.se2.Wellness.Tracker.dto.PhysicalWellbeingDTO;
 import edu.indiana.se2.Wellness.Tracker.entity.PhysicalWellbeingEntry;
 import edu.indiana.se2.Wellness.Tracker.repository.PhysicalWellbeingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 @Service
 public class PhysicalWellbeingService {
@@ -19,23 +18,15 @@ public class PhysicalWellbeingService {
         this.repository = repository;
     }
 
-    public PhysicalWellbeingDTO postActivity(PhysicalWellbeingDTO dto) {
-        PhysicalWellbeingEntry entry = new PhysicalWellbeingEntry();
-        entry.setDate(dto.getDate());
-        entry.setSteps(dto.getSteps());
-        entry.setDistance(dto.getDistance());
-        entry.setCaloriesBurned(dto.getCaloriesBurned());
-        entry.setWeight(dto.getWeight());
-        entry.setWorkoutType(dto.getWorkoutType());
-
-        PhysicalWellbeingEntry savedEntry = repository.save(entry);
-        return savedEntry.getActivityDTO();
+    public PhysicalWellbeingEntry logEntry(PhysicalWellbeingEntry entry) {
+        Optional<PhysicalWellbeingEntry> existing = repository.findByUsernameAndDate(entry.getUsername(), entry.getDate());
+        if (existing.isPresent()) {
+            throw new IllegalArgumentException("Entry for this day already exists.");
+        }
+        return repository.save(entry);
     }
 
-    public List<PhysicalWellbeingDTO> getActivities() {
-        return repository.findAll()
-                .stream()
-                .map(PhysicalWellbeingEntry::getActivityDTO)
-                .collect(Collectors.toList());
+    public List<PhysicalWellbeingEntry> getEntriesForUser(String username) {
+        return repository.findByUsername(username);
     }
 }

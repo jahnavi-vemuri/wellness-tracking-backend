@@ -12,12 +12,13 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class MentalWellbeingEntry {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id; // ✅ Primary Key
 
     @Column(nullable = false)
-    private Long userId;
+    private String username;
 
     @Column(nullable = false)
     private LocalDate date;
@@ -29,21 +30,20 @@ public class MentalWellbeingEntry {
     private int stressLevel;
 
     @Column(nullable = false)
-    private int bedTime; // Store bedtime as HHMM (e.g., 2230 for 10:30 PM)
+    private int bedTime;
 
     @Column(nullable = false)
-    private int wakeupTime; // Store wake-up time as HHMM (e.g., 0630 for 6:30 AM)
+    private int wakeupTime;
 
     @Column(nullable = false)
-    private double screenTime; // Hours of screen usage
+    private double screenTime;
 
     @Column(columnDefinition = "TEXT")
-    private String notes; // Optional journal entry
+    private String notes;
 
     public MentalWellbeingDTO getMentalWellbeingDTO() {
         MentalWellbeingDTO dto = new MentalWellbeingDTO();
-        dto.setId(id);
-        dto.setUserId(userId);
+        dto.setUsername(username);
         dto.setDate(date);
         dto.setMoodRating(moodRating);
         dto.setStressLevel(stressLevel);

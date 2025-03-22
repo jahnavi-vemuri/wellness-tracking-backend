@@ -4,8 +4,7 @@ import java.time.LocalDate;
 
 @Data
 public class MentalWellbeingDTO {
-    private Long id;
-    private Long userId;
+    private String username;
     private LocalDate date;
     private int moodRating;
     private int stressLevel;

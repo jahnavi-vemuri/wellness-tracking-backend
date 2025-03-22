@@ -33,11 +33,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableMethodSecurity
 public class SecurityConfig implements WebMvcConfigurer {
 
-    private RSAKey rsaKey;
+    private final RSAKey rsaKey;
 
     public SecurityConfig() {
         this.rsaKey = Jwks.generateRsa();
     }
+
+    // ------------------------
+    // JWT Beans
+    // ------------------------
 
     @Bean
     public JWKSource<SecurityContext> jwkSource() {
@@ -46,32 +50,43 @@ public class SecurityConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    JwtEncoder jwtEncoder(JWKSource<SecurityContext> jwks) {
+    public JwtEncoder jwtEncoder(JWKSource<SecurityContext> jwks) {
         return new NimbusJwtEncoder(jwks);
     }
 
     @Bean
-    JwtDecoder jwtDecoder() throws JOSEException {
+    public JwtDecoder jwtDecoder() throws JOSEException {
         return NimbusJwtDecoder.withPublicKey(rsaKey.toRSAPublicKey()).build();
     }
 
+    // ------------------------
+    // CORS for Angular Frontend
+    // ------------------------
+
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        // Allow CORS for frontend
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost:4200")  // Frontend origin
-                .allowedMethods("GET", "POST", "PUT", "DELETE")  // Allowed HTTP methods
-                .allowedHeaders("Authorization", "Content-Type")  // Allowed headers
-                .allowCredentials(true);  // Allow credentials (cookies, headers)
+                .allowedOrigins("http://localhost:4200")
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                .allowedHeaders("Authorization", "Content-Type")
+                .exposedHeaders("Authorization")
+                .allowCredentials(true);
     }
+
+    // ------------------------
+    // Main Security Configuration
+    // ------------------------
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        // Configure a JWT Authentication Converter to avoid extra prefixing.
+
         JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
         JwtGrantedAuthoritiesConverter grantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
-        // Since our token already includes "ROLE_" in the scope, we set the authority prefix to an empty string.
-        grantedAuthoritiesConverter.setAuthorityPrefix("");
+
+        // ✅ Fix: Set scope as authority claim
+        grantedAuthoritiesConverter.setAuthorityPrefix("ROLE_");
         grantedAuthoritiesConverter.setAuthoritiesClaimName("scope");
+
         jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(grantedAuthoritiesConverter);
 
         return http
@@ -85,9 +100,16 @@ public class SecurityConfig implements WebMvcConfigurer {
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .oauth2ResourceServer(oauth2 -> oauth2.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter)))
+                .oauth2ResourceServer(oauth2 -> oauth2
+                        .jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter))
+                )
                 .build();
     }
+
+    // ------------------------
+    // AuthManager Bean
+    // ------------------------
+
     @Bean
     public AuthenticationManager authManager(UserDetailsService userDetailsService) {
         var authProvider = new DaoAuthenticationProvider();
