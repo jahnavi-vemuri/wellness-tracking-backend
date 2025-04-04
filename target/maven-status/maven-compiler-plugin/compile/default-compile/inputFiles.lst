@@ -3,6 +3,7 @@
 /Users/jahnavivemuri/Documents/SE2/wellness-tracking-backend/src/main/java/edu/indiana/se2/Wellness/Tracker/controller/MealEntryController.java
 /Users/jahnavivemuri/Documents/SE2/wellness-tracking-backend/src/main/java/edu/indiana/se2/Wellness/Tracker/controller/MentalWellbeingController.java
 /Users/jahnavivemuri/Documents/SE2/wellness-tracking-backend/src/main/java/edu/indiana/se2/Wellness/Tracker/controller/PhysicalWellbeingController.java
+/Users/jahnavivemuri/Documents/SE2/wellness-tracking-backend/src/main/java/edu/indiana/se2/Wellness/Tracker/dto/LoginRequest.java
 /Users/jahnavivemuri/Documents/SE2/wellness-tracking-backend/src/main/java/edu/indiana/se2/Wellness/Tracker/dto/MealEntryDTO.java
 /Users/jahnavivemuri/Documents/SE2/wellness-tracking-backend/src/main/java/edu/indiana/se2/Wellness/Tracker/dto/MentalWellbeingDTO.java
 /Users/jahnavivemuri/Documents/SE2/wellness-tracking-backend/src/main/java/edu/indiana/se2/Wellness/Tracker/dto/PhysicalWellbeingDTO.java
