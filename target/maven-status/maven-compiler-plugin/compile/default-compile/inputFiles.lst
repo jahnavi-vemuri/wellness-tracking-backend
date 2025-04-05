@@ -21,8 +21,8 @@
 /Users/jahnavivemuri/Documents/SE2/wellness-tracking-backend/src/main/java/edu/indiana/se2/Wellness/Tracker/security/JwtUtil.java
 /Users/jahnavivemuri/Documents/SE2/wellness-tracking-backend/src/main/java/edu/indiana/se2/Wellness/Tracker/security/KeyGeneratorUtils.java
 /Users/jahnavivemuri/Documents/SE2/wellness-tracking-backend/src/main/java/edu/indiana/se2/Wellness/Tracker/security/SecurityConfig.java
-/Users/jahnavivemuri/Documents/SE2/wellness-tracking-backend/src/main/java/edu/indiana/se2/Wellness/Tracker/services/Registration/AuthenticationService.java
-/Users/jahnavivemuri/Documents/SE2/wellness-tracking-backend/src/main/java/edu/indiana/se2/Wellness/Tracker/services/Registration/IAuthenticationService.java
+/Users/jahnavivemuri/Documents/SE2/wellness-tracking-backend/src/main/java/edu/indiana/se2/Wellness/Tracker/services/AuthenticationService.java
+/Users/jahnavivemuri/Documents/SE2/wellness-tracking-backend/src/main/java/edu/indiana/se2/Wellness/Tracker/services/IAuthenticationService.java
 /Users/jahnavivemuri/Documents/SE2/wellness-tracking-backend/src/main/java/edu/indiana/se2/Wellness/Tracker/services/TokenService.java
 /Users/jahnavivemuri/Documents/SE2/wellness-tracking-backend/src/main/java/edu/indiana/se2/Wellness/Tracker/services/mealEntry/MealEntryService.java
 /Users/jahnavivemuri/Documents/SE2/wellness-tracking-backend/src/main/java/edu/indiana/se2/Wellness/Tracker/services/mentalWellbeing/MentalWellbeingService.java
