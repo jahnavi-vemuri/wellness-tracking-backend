@@ -19,13 +19,13 @@ public class Customer {
         this.password = password;
     }
 
-//    public Customer(String username, String password, String emailId, String firstName, String lastName) {
-//        this.username = username;
-//        this.password = password;
-//        this.emailId = emailId;
-//        this.firstName = firstName;
-//        this.lastName = lastName;
-//    }
+    public Customer(String username, String password, String emailId, String firstName, String lastName) {
+        this.username = username;
+        this.password = password;
+        this.emailId = emailId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
     public Customer() {
     }
