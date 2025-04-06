@@ -14,7 +14,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/user/physical-wellbeing")
 @RequiredArgsConstructor
-@CrossOrigin("*")
 public class PhysicalWellbeingController {
 
     private final PhysicalWellbeingService activityService;
@@ -29,6 +28,7 @@ public class PhysicalWellbeingController {
             PhysicalWellbeingEntry savedEntry = activityService.logEntry(entry);
             return new ResponseEntity<>(savedEntry, HttpStatus.CREATED);
         } catch (IllegalArgumentException ex) {
+            System.out.print("illegal argument when logging physical entry");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }

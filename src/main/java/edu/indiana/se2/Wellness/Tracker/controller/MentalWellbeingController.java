@@ -14,7 +14,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/user/mental-wellbeing")
 @RequiredArgsConstructor
-@CrossOrigin("*")
 public class MentalWellbeingController {
 
     private final MentalWellbeingService service;

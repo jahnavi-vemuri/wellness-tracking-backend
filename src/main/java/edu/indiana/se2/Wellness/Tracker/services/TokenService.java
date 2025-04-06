@@ -24,6 +24,11 @@ public class TokenService {
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.joining(" "));
 
+        // If no roles were set, use a default role "USER"
+//        if (scope.trim().isEmpty()) {
+//            scope = "USER";
+//        }
+
         JwtClaimsSet claims = JwtClaimsSet.builder()
                 .issuer("self")
                 .issuedAt(now)
