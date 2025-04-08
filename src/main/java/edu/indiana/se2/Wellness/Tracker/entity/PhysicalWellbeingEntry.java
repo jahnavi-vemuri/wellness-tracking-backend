@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -21,7 +22,7 @@ public class PhysicalWellbeingEntry {
     private String username;
 
     @Column(nullable = false)
-    private Date date;
+    private LocalDate date;
 
     @Column(nullable = false)
     private int steps;
@@ -40,7 +41,7 @@ public class PhysicalWellbeingEntry {
 
     public PhysicalWellbeingDTO getActivityDTO() {
         PhysicalWellbeingDTO dto = new PhysicalWellbeingDTO();
-        dto.setUsername(username); // ✅ include it if needed on frontend
+        dto.setUsername(username);
         dto.setDate(date);
         dto.setSteps(steps);
         dto.setDistance(distance);
