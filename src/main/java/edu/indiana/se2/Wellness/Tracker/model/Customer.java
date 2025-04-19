@@ -13,6 +13,7 @@ public class Customer {
     private String emailId;
     private String firstName;
     private String lastName;
+    private String totpSecret;
 
     public Customer(String username, String password) {
         this.username = username;
@@ -26,6 +27,15 @@ public class Customer {
         this.firstName = firstName;
         this.lastName = lastName;
     }
+    public Customer(String username, String password, String emailId, String firstName, String lastName, String totpSecret) {
+        this.username = username;
+        this.password = password;
+        this.emailId = emailId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.totpSecret = totpSecret;
+    }
+
 
     public Customer() {
     }
@@ -68,5 +78,12 @@ public class Customer {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getTotpSecret(){
+        return totpSecret;
+    }
+    public void setTotpSecret(String totpSecret){
+        this.totpSecret = totpSecret;
     }
 }
