@@ -26,6 +26,7 @@ public class Customer {
         this.emailId = emailId;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.totpSecret = null;
     }
     public Customer(String username, String password, String emailId, String firstName, String lastName, String totpSecret) {
         this.username = username;

@@ -28,7 +28,7 @@ public class AuthenticationService implements IAuthenticationService, UserDetail
         BCryptPasswordEncoder bc = new BCryptPasswordEncoder();
         String passwordEncoded = bc.encode(customer.getPassword());
         customer.setPassword(passwordEncoded);
-
+        customer.setTotpSecret(null);
         // Check if the username already exists
         Customer existingCustomer = authenticationRepository.findByUsername(customer.getUsername());
         if (existingCustomer != null) {
@@ -46,7 +46,6 @@ public class AuthenticationService implements IAuthenticationService, UserDetail
         // Implement login logic if needed
         return false;
     }
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // Fetch the customer by username from the database
@@ -60,4 +59,9 @@ public class AuthenticationService implements IAuthenticationService, UserDetail
                 .authorities(new String[] {}) // Empty authorities
                 .build();
     }
+    @Override
+    public Customer getCustomerByUsername(String username) {
+        return authenticationRepository.findByUsername(username);
+    }
+
 }
