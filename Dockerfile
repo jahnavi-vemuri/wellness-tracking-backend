@@ -1,14 +1,19 @@
-# Use a minimal Java 17 runtime image
-FROM eclipse-temurin:17-jdk-alpine
+# Use an OpenJDK image to build the app
+FROM eclipse-temurin:17-jdk-alpine AS build
 
-# Set the working directory
 WORKDIR /app
 
-# Copy the Spring Boot JAR into the container
-COPY target/Wellness-Tracker-0.0.1-SNAPSHOT.jar app.jar
+COPY . .
 
-# Expose the port Spring Boot runs on (default: 8080)
+RUN ./mvnw clean package -DskipTests
+
+# Use a smaller base image for running the app
+FROM eclipse-temurin:17-jdk-alpine
+
+WORKDIR /app
+
+COPY --from=build /app/target/Wellness-Tracker-0.0.1-SNAPSHOT.jar app.jar
+
 EXPOSE 8080
 
-# Start the app
 ENTRYPOINT ["java", "-jar", "app.jar"]
