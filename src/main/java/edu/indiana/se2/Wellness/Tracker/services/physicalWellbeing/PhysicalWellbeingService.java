@@ -29,4 +29,13 @@ public class PhysicalWellbeingService {
     public List<PhysicalWellbeingEntry> getEntriesForUser(String username) {
         return repository.findByUsername(username);
     }
+
+    public boolean deleteEntry(Long id, String username) {
+        Optional<PhysicalWellbeingEntry> entry = repository.findById(id);
+        if (entry.isPresent() && entry.get().getUsername().equals(username)) {
+            repository.delete(entry.get());
+            return true;
+        }
+        return false;  // Entry not found or user is not authorized to delete
+    }
 }

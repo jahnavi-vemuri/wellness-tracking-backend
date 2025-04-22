@@ -39,4 +39,15 @@ public class PhysicalWellbeingController {
         List<PhysicalWellbeingEntry> entries = activityService.getEntriesForUser(username);
         return new ResponseEntity<>(entries, HttpStatus.OK);
     }
+
+    @DeleteMapping("/logs/{id}")
+    public ResponseEntity<Void> deletePhysicalEntry(@PathVariable Long id, @AuthenticationPrincipal Jwt jwt) {
+        String username = jwt.getSubject();
+        boolean deleted = activityService.deleteEntry(id, username);  // Service method to handle delete
+        if (deleted) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);  // Successfully deleted
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);  // Entry not found
+        }
+    }
 }

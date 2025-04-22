@@ -34,4 +34,15 @@ public class MealEntryController {
         List<MealEntry> meals = mealEntryService.getMealsForUser(username);
         return new ResponseEntity<>(meals, HttpStatus.OK);
     }
+
+    @DeleteMapping("/logs/{id}")
+    public ResponseEntity<Void> deleteMealEntry(@PathVariable Long id, @AuthenticationPrincipal Jwt jwt) {
+        String username = jwt.getSubject();
+        boolean deleted = mealEntryService.deleteEntry(id, username);  // Service method to handle delete
+        if (deleted) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);  // Successfully deleted
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);  // Entry not found
+        }
+    }
 }

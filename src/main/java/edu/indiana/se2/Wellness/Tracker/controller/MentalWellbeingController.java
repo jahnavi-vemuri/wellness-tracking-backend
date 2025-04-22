@@ -37,4 +37,15 @@ public class MentalWellbeingController {
         List<MentalWellbeingEntry> entries = service.getEntriesForUser(username);
         return new ResponseEntity<>(entries, HttpStatus.OK);
     }
+
+    @DeleteMapping("/logs/{id}")
+    public ResponseEntity<Void> deleteMentalEntry(@PathVariable Long id, @AuthenticationPrincipal Jwt jwt) {
+        String username = jwt.getSubject();
+        boolean deleted = service.deleteEntry(id, username);  // Service method to handle delete
+        if (deleted) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);  // Successfully deleted
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);  // Entry not found
+        }
+    }
 }

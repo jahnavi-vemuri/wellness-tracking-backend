@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MealEntryService {
@@ -24,6 +25,15 @@ public class MealEntryService {
 
     public List<MealEntry> getMealsForUser(String username) {
         return mealEntryRepository.findByUsername(username);
+    }
+
+    public boolean deleteEntry(Long id, String username) {
+        Optional<MealEntry> entry = mealEntryRepository.findById(id);
+        if (entry.isPresent() && entry.get().getUsername().equals(username)) {
+            mealEntryRepository.delete(entry.get());
+            return true;
+        }
+        return false;  // Entry not found or user is not authorized to delete
     }
 }
 
