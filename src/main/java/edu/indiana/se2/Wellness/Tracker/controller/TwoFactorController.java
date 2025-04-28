@@ -37,11 +37,13 @@ public class TwoFactorController {
         Map<String, String> response = new HashMap<>();
         try {
             String secret = totpService.generateSecret();
+            System.out.println("XXX - secret generated");
             String qrCode = totpService.generateQrCode(secret, email);
-
+            System.out.println("XXX - Qr Code generated");
             response.put("secret", secret);
             response.put("qrCodeUrl", qrCode);
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             response.put("error", "Failed to generate QR code.");
         }
         return response;
