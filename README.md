@@ -1,87 +1,64 @@
-This is the Spring Boot backend for the Wellness Tracking System, which supports tracking physical activities, mental health status, and meal diets. It includes secure authentication, RESTful APIs, and integration with Groq's Llama 3 chatbot.
+This is the Spring Boot backend for the Wellness Tracking System. It enables users to track physical activities, mental health status, and meal diets. The system also includes secure authentication (JWT + Google 2FA), RESTful APIs, and a chatbot powered by Groq's Llama 3 model.
+
 
 🚀 Tech Stack
-Language: Java 17
+- Language: Java 17
+- Framework: Spring Boot
+- Database: MySQL
+- Authentication: JWT + Google 2FA
+- Build Tool: Maven
+- Deployment: Render
 
-Framework: Spring Boot
-
-Database: MySQL
-
-Authentication: JWT + Google 2FA
-
-Build Tool: Maven
-
-Deployment: Render
-
-Others: DTO Pattern, REST APIs, Layered Architecture
 
 📁 Project Structure
-bash
-Copy
-Edit
 src/
-├── config/               # Security, CORS, JWT
+├── config/               # Security, CORS, JWT configurations
 ├── controller/           # REST API endpoints
 ├── dto/                  # Data Transfer Objects
 ├── model/                # Entity classes
 ├── repository/           # JPA Repositories
 ├── service/              # Business logic
 ├── utils/                # Helper classes (e.g., TokenUtil)
-└── WellnessApplication.java
+└── WellnessApplication.java  # Main Spring Boot application
+
+
 🔐 Security Features
-JWT-based login/session handling
-
-2-Factor Authentication (Google Authenticator)
-
-Encrypted passwords using BCrypt
+- JWT-based authentication and session management
+- 2-Factor Authentication with Google Authenticator
+- Secure password storage with BCrypt
+- Role-based access control
 
 
 🔗 REST API Endpoints (Sample)
-Method	Endpoint	Description
-POST	/auth/signup	Register user
-POST	/auth/login	Login + JWT
-POST	/auth/verify-2fa	Google 2FA
-GET	/api/physical	Get physical activity logs
-POST	/api/mental	Submit mental health entry
-POST	/api/meal	Submit meal tracking
-GET	/api/dashboard	Summary stats
+| Method | Endpoint           | Description                  |
+| ------ | ------------------ | ---------------------------- |
+| POST   | `/auth/signup`     | Register a new user          |
+| POST   | `/auth/login`      | Login and receive JWT        |
+| POST   | `/auth/verify-2fa` | Verify 2FA code              |
+| GET    | `/api/physical`    | Fetch physical activity logs |
+| POST   | `/api/mental`      | Submit mental health entry   |
+| POST   | `/api/meal`        | Submit meal tracking data    |
+| GET    | `/api/dashboard`   | Get summary statistics       |
+
 
 🛠️ Setup Instructions
-Clone the repo
-
-bash
-Copy
-Edit
+- Clone the repo: 
 git clone https://github.com/your-org/wellness-backend.git
 cd wellness-backend
-Update application.properties:
 
-properties
-Copy
-Edit
+- Configure Application Properties
+Edit src/main/resources/application.properties:
 spring.datasource.url=jdbc:mysql://localhost:3306/wellness
 spring.datasource.username=root
 spring.datasource.password=yourpassword
 jwt.secret=your_jwt_secret
 Run the application:
 
-bash
-Copy
-Edit
+- Run the Application
 ./mvnw spring-boot:run
+
 📤 Deployment (Render)
-Connected via GitHub
+- Connected via GitHub
+- Auto-deploys on push to main
 
-Auto-deploys on push to main
-
-Uses .render.yaml or Render dashboard config
-
-Environment variables set via Render UI
-
-✅ Testing
-Unit tests for services and utilities (JUnit)
-
-Manual post-deployment tests using Postman
-
-Regression checklist for core APIs
-
+Backend URL: https://wellness-tracking-backend-1.onrender.com 
