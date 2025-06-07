@@ -21,7 +21,6 @@ src/
 ├── utils/                # Helper classes (e.g., TokenUtil)
 └── WellnessApplication.java  # Main Spring Boot application
 
-
 🔐 Security Features
 - JWT-based authentication and session management
 - 2-Factor Authentication with Google Authenticator
