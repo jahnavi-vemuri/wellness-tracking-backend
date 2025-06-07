@@ -10,16 +10,16 @@ This is the Spring Boot backend for the Wellness Tracking System. It enables use
 - Deployment: Render
 
 
-📁 Project Structure
+Project Structure:
 src/
-├── config/               # Security, CORS, JWT configurations
-├── controller/           # REST API endpoints
-├── dto/                  # Data Transfer Objects
-├── model/                # Entity classes
-├── repository/           # JPA Repositories
-├── service/              # Business logic
-├── utils/                # Helper classes (e.g., TokenUtil)
-└── WellnessApplication.java  # Main Spring Boot application
+- config/                -> Security, CORS, JWT configurations
+- controller/            -> REST API endpoints
+- dto/                   -> Data Transfer Objects
+- model/                 -> Entity classes
+- repository/            -> JPA Repositories
+- service/               -> Business logic
+- utils/                 -> Helper classes (e.g., TokenUtil)
+- WellnessApplication.java -> Main Spring Boot application
 
 🔐 Security Features
 - JWT-based authentication and session management
